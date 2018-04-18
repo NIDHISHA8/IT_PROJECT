@@ -88,7 +88,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (100,'abc'),(200,'xyz'),(300,'pqr');
+INSERT INTO `customer` VALUES (100,'abc'),(200,'xyz'),(400,'pqr');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
