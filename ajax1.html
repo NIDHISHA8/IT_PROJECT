@@ -1,0 +1,63 @@
+<html>
+<head>
+<title> class representive </title>
+<style>
+body{
+	background-color: "#0000FF";
+	text-align: center;++
+}
+.displaybox{
+	color: rgb(0,0,255);	
+	margin: auto;
+	width: 200px;
+	
+	padding: 10px;
+	align: center;
+	font: 1em normal verdana, helvetica; 
+}
+</style>
+<script>
+	var ajaxobject=new XMLHttpRequest();
+	function showcandidate() {
+	  if(!ajaxobject)
+	  {
+	  	document.getElementById("showcandidate").innerHTML="AJAX obejct could not be created";
+	  	return;
+	  }
+	  	  ajaxobject.open("GET","voting.php");
+	  	  ajaxobject.send();
+	  	  ajaxobject.onreadystatechange=getResponse; 	
+	}
+	function getResponse(){
+		if(ajaxobject.readyState == 4 && ajaxobject.status == 200)
+		{
+			document.getElementById('showcandidate').innerHTML=ajaxobject.responseText;
+		}
+	}
+function recording() {
+
+var voted_for=document.getElementById('myform').elements['vote'].value;
+document.getElementById('record').innerHTML=voted_for;
+ajaxobject.open("GET","update.php?q="+voted_for);
+	  	  ajaxobject.send();
+	  	  ajaxobject.onreadystatechange=getResponse; 
+  }
+	  	 
+</script>
+</head>
+<body>
+	<h1> CLASS REPRESENTATIVE ELECTION </h1>
+	
+		<input type=button value="show candidate" onclick="showcandidate()"/>
+	
+	<div id="showcandidate" class="displaybox">
+	</div>
+	
+		<input type=button value="record vote" onclick="recording()" />	
+	
+	<div id="record" class="displaybox">
+	
+	</div>
+	</body>
+</html>
+
